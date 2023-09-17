@@ -57,36 +57,39 @@ export const TasksList = () => {
     const [activeFilter] = useFilter();
     const filteredTasks = filterTasks(tasks, activeFilter);
     return (
-        <List
-            display='flex'
-            flexDirection='column'
-            minHeight='10rem'
-            maxHeight='65vh'
-            overflow='scroll'
-            paddingX='10px'
-            css={{
-                '&::-webkit-scrollbar': {
-                    width: '4px'
-                },
-                '&::-webkit-scrollbar-track': {
-                    width: '6px'
-                },
-                '&::-webkit-scrollbar-thumb': {
-                    background: '#cdcdcd',
-                    borderRadius: '24px'
-                }
-            }}
-        >
-            {!tasks.length && (
+        <>
+            {!tasks.length ? (
                 <Flex justifyContent='center' alignItems='center' height='100%'>
                     <Text fontSize='2xl' color='blackAlpha.500'>
                         Add todos
                     </Text>
                 </Flex>
+            ) : (
+                <List
+                    display='flex'
+                    flexDirection='column'
+                    minHeight='10rem'
+                    maxHeight='65vh'
+                    overflow='scroll'
+                    paddingX='10px'
+                    css={{
+                        '&::-webkit-scrollbar': {
+                            width: '4px'
+                        },
+                        '&::-webkit-scrollbar-track': {
+                            width: '6px'
+                        },
+                        '&::-webkit-scrollbar-thumb': {
+                            background: '#cdcdcd',
+                            borderRadius: '24px'
+                        }
+                    }}
+                >
+                    {filteredTasks.map((task) => (
+                        <TasksItem key={task.id} task={task} />
+                    ))}
+                </List>
             )}
-            {filteredTasks.map((task) => (
-                <TasksItem key={task.id} task={task} />
-            ))}
-        </List>
+        </>
     );
 };
