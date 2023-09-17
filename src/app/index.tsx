@@ -8,7 +8,7 @@ export const App = () => {
         <ChakraProvider theme={theme}>
             <TasksProvider>
                 <FilterProvider>
-                    <Flex flexDirection='column'>
+                    <Flex flexDirection='column' paddingBottom='20px'>
                         <TodosWidget />
                     </Flex>
                 </FilterProvider>
