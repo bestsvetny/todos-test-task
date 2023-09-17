@@ -1,4 +1,5 @@
 # Тестовое задание Frontend junior в Mindbox
+Github Pages: https://bestsvetny.github.io/todos-test-task/
 
 Инструменты:
 - React.js
