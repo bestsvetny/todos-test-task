@@ -1,6 +1,6 @@
 import { Box, Input } from '@chakra-ui/react';
 import React, { useState } from 'react';
-import { taskAdded, useTasksDispatch } from 'src/widgets/todos';
+import { taskAdded, useTasksDispatch } from 'src/entities/tasks/model/tasks-slice.ts';
 
 export const NewTaskField = () => {
     const [taskText, setTaskText] = useState<string>('');

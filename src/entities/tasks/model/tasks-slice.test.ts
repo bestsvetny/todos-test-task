@@ -1,11 +1,5 @@
 import { describe, expect, test } from 'vitest';
-import {
-    clearCompleted,
-    taskAdded,
-    taskDeleted,
-    tasksReducer,
-    taskToggled
-} from 'src/widgets/todos/model/tasks-slice.ts';
+import { clearCompleted, taskAdded, taskDeleted, tasksReducer, taskToggled } from './tasks-slice.ts';
 
 vitest.mock('uuid', () => ({
     v4: () => 'mocked-id'

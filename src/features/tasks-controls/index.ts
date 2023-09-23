@@ -1,2 +1,1 @@
-export * from './ui';
-export * from './model';
+export { TasksControls } from './ui/tasks-controls.tsx';

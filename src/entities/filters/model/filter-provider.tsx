@@ -1,6 +1,5 @@
 import React, { useState } from 'react';
-import { FilterContext } from 'src/features/tasks-controls/model/filter-slice.ts';
-import { Filters } from 'src/features/tasks-controls/model/filter-slice.ts';
+import { Filters, FilterContext } from 'src/entities/filters';
 
 export const FilterProvider = ({ children }: { children: React.ReactNode }) => {
     const [filter, setFilter] = useState<Filters>(Filters.all);

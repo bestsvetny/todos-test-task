@@ -1,7 +1,8 @@
 import { ChakraProvider, Flex } from '@chakra-ui/react';
 import { theme } from 'src/app/styles/theme.ts';
-import { TasksProvider, TodosWidget } from 'src/widgets/todos';
-import { FilterProvider } from 'src/features/tasks-controls';
+import { TodosWidget } from 'src/widgets/todos';
+import { TasksProvider } from 'src/entities/tasks';
+import { FilterProvider } from 'src/entities/filters';
 
 export const App = () => {
     return (

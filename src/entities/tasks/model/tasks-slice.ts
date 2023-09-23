@@ -16,6 +16,7 @@ type TasksAction =
     | { type: 'TASK_CLEAR_COMPLETED' };
 
 /* ACTIONS */
+
 export const taskAdded = (taskText: string): { type: 'TASK_ADDED'; payload: { text: string; id: string } } => {
     return { type: 'TASK_ADDED', payload: { text: taskText, id: uuidv4() } };
 };

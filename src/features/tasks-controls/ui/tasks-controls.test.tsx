@@ -9,7 +9,7 @@ const testToggleInactiveButton = (btn: HTMLElement) => {
     expect(btn).toHaveAttribute('data-active');
 };
 
-describe('Tasks controls unit test', () => {
+describe('Tasks controls', () => {
     beforeEach(() => {
         renderWithContext(<TasksControls />, []);
     });
