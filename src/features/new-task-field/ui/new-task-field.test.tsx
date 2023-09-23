@@ -3,7 +3,7 @@ import { expect } from 'vitest';
 import { NewTaskField } from 'src/features/new-task-field';
 import { renderWithContext } from 'src/shared/tests';
 
-describe('Task input field unit test', () => {
+describe('Task input field', () => {
     test('Input and submit text, expect the input to have the text value', () => {
         renderWithContext(<NewTaskField />, []);
         const text = 'My task';

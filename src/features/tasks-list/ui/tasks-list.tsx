@@ -1,8 +1,8 @@
 import React from 'react';
 import { Checkbox, Flex, IconButton, List, ListItem, Text } from '@chakra-ui/react';
 import { CloseIcon } from '@chakra-ui/icons';
-import { Task, taskDeleted, taskToggled, useTasks, useTasksDispatch } from 'src/widgets/todos';
-import { Filters, useFilter } from 'src/features/tasks-controls';
+import { Task, taskDeleted, taskToggled, useTasks, useTasksDispatch } from 'src/entities/tasks';
+import { Filters, useFilter } from 'src/entities/filters';
 
 const filterTasks = (tasks: Array<Task>, filter: Filters) => {
     switch (filter) {

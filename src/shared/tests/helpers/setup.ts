@@ -1,5 +1,5 @@
-import { renderWithContext } from 'src/shared/tests';
-import { Task } from 'src/widgets/todos';
+import { renderWithContext } from './render-with-context.tsx';
+import { Task } from 'src/entities/tasks';
 import { userEvent } from '@testing-library/user-event';
 import React from 'react';
 

@@ -1,6 +1,6 @@
 import { Button, Grid, GridItem, Stack, Text } from '@chakra-ui/react';
-import { clearCompleted, useTasks, useTasksDispatch } from 'src/widgets/todos';
-import { Filters, useFilter } from 'src/features/tasks-controls';
+import { clearCompleted, useTasks, useTasksDispatch } from 'src/entities/tasks';
+import { Filters, useFilter } from 'src/entities/filters';
 
 const TaskCounter = () => {
     const tasks = useTasks();

@@ -1,2 +1,1 @@
-export * from './ui';
-export * from './model';
+export { TodosWidget } from './ui/todos-widget.tsx';

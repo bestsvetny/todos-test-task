@@ -21,7 +21,7 @@ const mockTasks = [
     }
 ];
 
-describe('Tasks list unit test', () => {
+describe('Tasks list', () => {
     beforeEach(() => {
         renderWithContext(<TasksList />, mockTasks);
     });

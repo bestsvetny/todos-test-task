@@ -1,1 +1,1 @@
-export * from './ui';
+export { TasksList } from './ui/tasks-list.tsx';

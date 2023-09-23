@@ -1,6 +1,5 @@
 import React, { useReducer } from 'react';
-import { Task, tasksReducer } from 'src/widgets/todos';
-import { TasksContext, TasksDispatchContext } from 'src/widgets/todos';
+import { Task, tasksReducer, TasksContext, TasksDispatchContext } from './tasks-slice.ts';
 
 const defaultTasks = [
     {
