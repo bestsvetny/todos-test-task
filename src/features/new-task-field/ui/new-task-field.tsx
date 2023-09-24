@@ -1,6 +1,6 @@
 import { Box, Input } from '@chakra-ui/react';
 import React, { useState } from 'react';
-import { taskAdded, useTasksDispatch } from 'src/entities/tasks/model/tasks-slice.ts';
+import { tasks, useTasksDispatch } from 'src/entities/tasks';
 
 export const NewTaskField = () => {
     const [taskText, setTaskText] = useState<string>('');
@@ -12,7 +12,7 @@ export const NewTaskField = () => {
     const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
         e.preventDefault();
         if (taskText) {
-            dispatch(taskAdded(taskText));
+            dispatch(tasks.added(taskText));
         }
         setTaskText('');
     };

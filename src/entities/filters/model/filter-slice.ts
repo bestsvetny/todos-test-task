@@ -6,11 +6,8 @@ export enum Filters {
     completed = 'completed'
 }
 
-/* CONTEXT */
-
 type FilterState = [Filters, React.Dispatch<React.SetStateAction<Filters>>];
 export const FilterContext = createContext<FilterState | null>(null);
-
 export function useFilter() {
     const context = useContext(FilterContext);
     if (context === null) {

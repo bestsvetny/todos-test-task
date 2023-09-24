@@ -1,40 +1,37 @@
 import { createContext, Dispatch, Reducer, useContext } from 'react';
 import { v4 as uuidv4 } from 'uuid';
 
-/* TYPES */
-
 export type Task = {
     id: string;
     text: string;
     completed: boolean;
 };
 type TasksState = Array<Task>;
+
+export const tasks = {
+    added: (taskText: string): { type: 'TASKS_ADDED'; payload: { text: string; id: string } } => {
+        return { type: 'TASKS_ADDED', payload: { text: taskText, id: uuidv4() } };
+    },
+    toggled: (taskId: string): { type: 'TASKS_TOGGLED'; payload: string } => {
+        return { type: 'TASKS_TOGGLED', payload: taskId };
+    },
+    deleted: (taskId: string): { type: 'TASKS_DELETED'; payload: string } => {
+        return { type: 'TASKS_DELETED', payload: taskId };
+    },
+    clearCompleted: (): { type: 'TASKS_CLEAR_COMPLETED' } => {
+        return { type: 'TASKS_CLEAR_COMPLETED' };
+    }
+};
+
 type TasksAction =
-    | { type: 'TASK_ADDED'; payload: { text: string; id: string } }
-    | { type: 'TASK_TOGGLED'; payload: string }
-    | { type: 'TASK_DELETED'; payload: string }
-    | { type: 'TASK_CLEAR_COMPLETED' };
-
-/* ACTIONS */
-
-export const taskAdded = (taskText: string): { type: 'TASK_ADDED'; payload: { text: string; id: string } } => {
-    return { type: 'TASK_ADDED', payload: { text: taskText, id: uuidv4() } };
-};
-export const taskToggled = (taskId: string): { type: 'TASK_TOGGLED'; payload: string } => {
-    return { type: 'TASK_TOGGLED', payload: taskId };
-};
-export const taskDeleted = (taskId: string): { type: 'TASK_DELETED'; payload: string } => {
-    return { type: 'TASK_DELETED', payload: taskId };
-};
-export const clearCompleted = (): { type: 'TASK_CLEAR_COMPLETED' } => {
-    return { type: 'TASK_CLEAR_COMPLETED' };
-};
-
-/* REDUCER */
+    | ReturnType<typeof tasks.added>
+    | ReturnType<typeof tasks.toggled>
+    | ReturnType<typeof tasks.deleted>
+    | ReturnType<typeof tasks.clearCompleted>;
 
 export const tasksReducer: Reducer<TasksState, TasksAction> = (tasks, action) => {
     switch (action.type) {
-        case 'TASK_ADDED':
+        case 'TASKS_ADDED':
             return [
                 {
                     id: action.payload.id,
@@ -43,7 +40,7 @@ export const tasksReducer: Reducer<TasksState, TasksAction> = (tasks, action) =>
                 },
                 ...tasks
             ];
-        case 'TASK_TOGGLED':
+        case 'TASKS_TOGGLED':
             return tasks.map((task) => {
                 if (task.id === action.payload) {
                     return {
@@ -53,9 +50,9 @@ export const tasksReducer: Reducer<TasksState, TasksAction> = (tasks, action) =>
                 }
                 return task;
             });
-        case 'TASK_DELETED':
+        case 'TASKS_DELETED':
             return tasks.filter((task) => task.id !== action.payload);
-        case 'TASK_CLEAR_COMPLETED':
+        case 'TASKS_CLEAR_COMPLETED':
             return tasks.filter((task) => !task.completed);
         default: {
             throw Error('Unknown action');
@@ -75,7 +72,6 @@ export function useTasks() {
     }
     return context;
 }
-
 export function useTasksDispatch() {
     const context = useContext(TasksDispatchContext);
     if (context === null) {

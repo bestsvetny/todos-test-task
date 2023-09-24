@@ -1,23 +1,13 @@
 import { Button, Grid, GridItem, Stack, Text } from '@chakra-ui/react';
-import { clearCompleted, useTasks, useTasksDispatch } from 'src/entities/tasks';
+import { tasks, useTasks, useTasksDispatch } from 'src/entities/tasks';
 import { Filters, useFilter } from 'src/entities/filters';
 
-const TaskCounter = () => {
-    const tasks = useTasks();
-    const countRemain = tasks ? tasks.filter((task) => !task.completed).length : 0;
-
-    return (
-        <GridItem display='flex'>
-            <Text data-testid='controls-counter'>{countRemain} items left</Text>
-        </GridItem>
-    );
-};
 export const TasksControls = () => {
     const [activeFilter, setActiveFilter] = useFilter();
     const dispatchTask = useTasksDispatch();
 
     const handleClear = () => {
-        dispatchTask(clearCompleted());
+        dispatchTask(tasks.clearCompleted());
     };
     const handleFilterChange = (filter: Filters) => {
         if (activeFilter === filter) {
@@ -63,5 +53,16 @@ export const TasksControls = () => {
                 </Button>
             </GridItem>
         </Grid>
+    );
+};
+
+const TaskCounter = () => {
+    const tasks = useTasks();
+    const countRemain = tasks ? tasks.filter((task) => !task.completed).length : 0;
+
+    return (
+        <GridItem display='flex'>
+            <Text data-testid='controls-counter'>{countRemain} items left</Text>
+        </GridItem>
     );
 };

@@ -1,7 +1,7 @@
 import React from 'react';
 import { Checkbox, Flex, IconButton, List, ListItem, Text } from '@chakra-ui/react';
 import { CloseIcon } from '@chakra-ui/icons';
-import { Task, taskDeleted, taskToggled, useTasks, useTasksDispatch } from 'src/entities/tasks';
+import { Task, tasks, useTasks, useTasksDispatch } from 'src/entities/tasks';
 import { Filters, useFilter } from 'src/entities/filters';
 
 const filterTasks = (tasks: Array<Task>, filter: Filters) => {
@@ -18,39 +18,6 @@ const filterTasks = (tasks: Array<Task>, filter: Filters) => {
 interface TasksItemProps {
     task: Task;
 }
-
-const TasksItem = React.memo(({ task }: TasksItemProps) => {
-    const dispatch = useTasksDispatch();
-    const handleToggleTask = () => {
-        dispatch(taskToggled(task.id));
-    };
-    const handleCLose = () => {
-        dispatch(taskDeleted(task.id));
-    };
-    return (
-        <ListItem data-testid='task-item'>
-            <Flex alignItems='center' justifyContent='space-between' minHeight='2.8rem' borderBottom='1px solid #eee'>
-                <Flex gap='10px'>
-                    <Checkbox
-                        data-testid='task-checkbox'
-                        isChecked={task.completed}
-                        onChange={handleToggleTask}
-                    ></Checkbox>
-                    <Text overflowWrap='break-word' maxWidth='470px'>
-                        {task.text}
-                    </Text>
-                </Flex>
-                <IconButton
-                    data-testid='task-close'
-                    aria-label='Close task'
-                    icon={<CloseIcon />}
-                    variant='ghost'
-                    onClick={handleCLose}
-                />
-            </Flex>
-        </ListItem>
-    );
-});
 
 export const TasksList = () => {
     const tasks = useTasks();
@@ -93,3 +60,36 @@ export const TasksList = () => {
         </>
     );
 };
+
+const TasksItem = React.memo(({ task }: TasksItemProps) => {
+    const dispatch = useTasksDispatch();
+    const handleToggleTask = () => {
+        dispatch(tasks.toggled(task.id));
+    };
+    const handleCLose = () => {
+        dispatch(tasks.deleted(task.id));
+    };
+    return (
+        <ListItem data-testid='task-item'>
+            <Flex alignItems='center' justifyContent='space-between' minHeight='2.8rem' borderBottom='1px solid #eee'>
+                <Flex gap='10px'>
+                    <Checkbox
+                        data-testid='task-checkbox'
+                        isChecked={task.completed}
+                        onChange={handleToggleTask}
+                    ></Checkbox>
+                    <Text overflowWrap='break-word' maxWidth='470px'>
+                        {task.text}
+                    </Text>
+                </Flex>
+                <IconButton
+                    data-testid='task-close'
+                    aria-label='Close task'
+                    icon={<CloseIcon />}
+                    variant='ghost'
+                    onClick={handleCLose}
+                />
+            </Flex>
+        </ListItem>
+    );
+});
