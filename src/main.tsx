@@ -1,6 +1,6 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
-import { App } from 'src/app';
+import { App } from 'src/app/app.tsx';
 import { ColorModeScript } from '@chakra-ui/react';
 import { theme } from 'src/app/styles/theme.ts';
 

@@ -40,6 +40,9 @@ export const TasksList = () => {
                     overflow='scroll'
                     paddingX='10px'
                     css={{
+                        '&::-moz-scrollbar': {
+                            width: '4px'
+                        },
                         '&::-webkit-scrollbar': {
                             width: '4px'
                         },

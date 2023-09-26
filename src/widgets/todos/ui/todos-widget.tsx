@@ -4,7 +4,7 @@ import { NewTaskField } from 'src/features/new-task-field';
 import { TasksControls } from 'src/features/tasks-controls';
 export const TodosWidget = () => {
     return (
-        <Flex flexDirection='column' alignItems='center'>
+        <Flex flexDirection='column' alignItems='center' data-testid='todos-widget'>
             <Text fontSize='6xl' fontWeight='300' color='pink.200' textShadow='2px 2px 2px #bbb'>
                 TODOS
             </Text>
